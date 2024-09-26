@@ -3,6 +3,10 @@
 <view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/view.xsd">
     <media>
         <images module="Magento_Catalog">
+         <image id="custom_image_role_for_list_view" type="small_image">
+                <width>100</width>
+                <height>150</height>
+            </image>
             <image id="bundled_product_customization_page" type="thumbnail">
                 <width>140</width>
                 <height>140</height>
