@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="custom_layout_two_columns" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Customer Login</title>
+    </head>
+    <body>
+        <referenceContainer name="main.content">
+            <referenceContainer name="content"/>
+        </referenceContainer>
+        
+        <referenceContainer name="right.column">
+            <block class="Magento\Framework\View\Element\Template" name="customer.right.column.block" template="Magento_Customer::right_column.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

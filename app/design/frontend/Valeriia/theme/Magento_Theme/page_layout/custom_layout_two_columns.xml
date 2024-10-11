@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+    <update handle="1column" />
+    <referenceContainer name="page.wrapper">
+          <container name="columns.wrapper" htmlTag="div" htmlClass="page-main columns-wrapper" after="header.container">
+            <container name="left.column" as="left" htmlTag="div" htmlClass="left-column">
+            <container name="page.top" as="page_top"  before="main.content"/>
+                <container name="main.content" htmlTag="main" htmlClass="page-main-full-width"/>
+            </container>
+            
+            <container name="right.column" as="right" htmlTag="div" htmlClass="right-column"/>
+        </container>
+    </referenceContainer>
+</layout>
