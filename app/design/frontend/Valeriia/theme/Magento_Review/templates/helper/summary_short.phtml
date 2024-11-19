@@ -1,0 +1,38 @@
+<?php
+
+/** @var \Magento\Review\Block\Product\ReviewRenderer $block */
+/** @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer */
+
+$url = $block->getReviewsUrl() . '#reviews';
+$urlForm = $block->getReviewsUrl() . '#review-form';
+?>
+<?php if ($block->isReviewEnabled()): ?>
+    <?php $rating = $block->getRatingSummary(); ?>
+    <div class="product-reviews-summary short<?= !$rating ? ' no-rating' : '' ?>">
+        <?php if ($rating): ?>
+            <div class="product-rating">
+                <div class="rating-bar">
+                    <div class="rating-fill" style="width: <?= $rating ?>%;"></div>
+                </div>
+                <div class="product-rating-text"><?= round($rating / 20, 1) ?>/5</div>
+            </div>
+        <?php else: ?>
+        <?php endif; ?>
+        <div class="reviews-actions">
+            <a class="action view"
+               href="<?= $block->escapeUrl($url) ?>"><?= $block->escapeHtml($block->getReviewsCount()) ?>
+                &nbsp;<span><?= ($block->getReviewsCount() == 1) ?
+                        $block->escapeHtml(__('Review')) : $block->escapeHtml(__('Reviews')) ?>
+                </span>
+            </a>
+        </div>
+    </div>
+    <?php elseif ($block->isReviewEnabled() && $block->getDisplayIfEmpty()): ?>
+    <div class="product-reviews-summary short empty">
+        <div class="reviews-actions">
+            <a class="action add" href="<?= $block->escapeUrl($urlForm) ?>">
+                <?= $block->escapeHtml(__('Be the first to review this product')) ?>
+            </a>
+        </div>
+    </div>
+<?php endif; ?>
