@@ -1,3 +1,4 @@
+
 .welcome-block {
     text-align: center;
 }
@@ -18,3 +19,82 @@ transform: translateX(-50%);
 .price-prefix {
 font-size: 28px;
 }
+
+//  > 375
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xxs) {
+    .page-products {
+        .products-grid {.product-item {
+            width: 100%;
+            .product-item-info {
+                margin-right: auto;
+                margin-left: auto;
+            }
+        }
+    }
+}}
+// 375-640
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+   
+    .page-products {
+        .products-grid .product-item {
+            width: calc(~'(100% - 2%) / 2');
+            &:nth-child(2n + 1) {
+                margin-left: 0;
+            }
+        }
+        }
+}
+
+//  640-768px (2 колонки, меню зліва)
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+    .page-products {
+        .products-grid .product-item {
+        width: calc(~'(100% - 2%) / 2');
+        &:nth-child(2n + 1) {
+            margin-left: 0;
+        }
+    }
+    
+}
+.columns {
+  display: block;
+}
+.page-layout-2columns-left {
+    .column.main {
+        float: right;
+    width: 80%;
+    padding-left: 2%;
+         }
+         .sidebar-main {
+            float: left;
+            padding-right: 2%;
+            width: 20%; 
+            .filter-options {
+                clear: both;
+                display: block;
+                position: static;
+                overflow: initial;
+            
+            }
+            
+            }
+            .sidebar-additional {
+                margin-top: 2%;
+                width: 20%;
+                clear: left;
+                float: left;
+            }      
+}
+}
+
+// > 1280px (5 колонок)
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl) {
+    .page-products {
+        .products-grid .product-item {
+        width: calc(~'(100% - 8%) / 5');
+        &:nth-child(5n + 1) {
+            margin-left: 0;
+        }
+    }
+}
+    }
