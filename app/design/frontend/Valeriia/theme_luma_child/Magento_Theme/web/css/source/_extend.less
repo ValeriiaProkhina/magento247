@@ -1,4 +1,3 @@
-
 .welcome-block {
     text-align: center;
 }
@@ -6,10 +5,10 @@
     position: relative;
 }
 .footer-perspective-info {
-position: absolute;
-top: 20px;
-left: 50%;
-transform: translateX(-50%);
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 .price-container {
     display: flex;
@@ -17,13 +16,14 @@ transform: translateX(-50%);
     gap: 8px;
 }
 .price-prefix {
-font-size: 28px;
+    font-size: 28px;
 }
 
-//  > 375
-.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xxs) {
+//  > 375px
+.media-width(@extremum, @break)
+    when (@extremum = 'max') and (@break = @screen__xxs) {
     .page-products {
-        .products-grid {.product-item {
+        .products-grid .product-item {
             width: 100%;
             .product-item-info {
                 margin-right: auto;
@@ -31,70 +31,131 @@ font-size: 28px;
             }
         }
     }
-}}
-// 375-640
-.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
-   
-    .page-products {
+}
+
+// 375-640px
+.media-width(@extremum, @break)
+    when (@extremum = 'max') and (@break = @screen__s) {
+    .page-products{
         .products-grid .product-item {
             width: calc(~'(100% - 2%) / 2');
             &:nth-child(2n + 1) {
                 margin-left: 0;
             }
         }
-        }
+    }
 }
 
 //  640-768px (2 колонки, меню зліва)
-.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+.media-width(@extremum, @break) 
+    when (@extremum = 'min') and (@break = @screen__s) {
     .page-products {
         .products-grid .product-item {
-        width: calc(~'(100% - 2%) / 2');
-        &:nth-child(2n + 1) {
-            margin-left: 0;
-        }
-    }
-    
-}
-.columns {
-  display: block;
-}
-.page-layout-2columns-left {
-    .column.main {
-        float: right;
-    width: 80%;
-    padding-left: 2%;
-         }
-         .sidebar-main {
-            float: left;
-            padding-right: 2%;
-            width: 20%; 
-            .filter-options {
-                clear: both;
+                width: calc(~'(100% - 2%) / 2');
+                &:nth-child(2n + 1) {
+                    margin-left: 0;
+                }
+            }}
+            .page-products.page-layout-2columns-left {         
+            .columns {
                 display: block;
-                position: static;
-                overflow: initial;
             
+            .column.main {
+                float: right;
+                width: 80%;
+                padding-left: 2%;
             }
-            
+            .sidebar-main {
+                float: left;
+                padding-right: 2%;
+                width: 20%;
+                .filter-options {
+                    clear: both;
+                    display: block;
+                    position: static;
+                    overflow: initial;
+                }
             }
             .sidebar-additional {
                 margin-top: 2%;
                 width: 20%;
                 clear: left;
                 float: left;
-            }      
-}
-}
+            }}
+    }}      
 
 // > 1280px (5 колонок)
-.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl) {
+.media-width(@extremum, @break) 
+    when (@extremum = 'min') and (@break = @screen__xl) {
     .page-products {
         .products-grid .product-item {
-        width: calc(~'(100% - 8%) / 5');
-        &:nth-child(5n + 1) {
-            margin-left: 0;
+            width: calc(~'(100% - 8%) / 5');
+            &:nth-child(5n + 1) {
+                margin-left: 0;
+            }
         }
     }
 }
+
+//  < 380px
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+    .account {
+        .columns {
+            display: flex;
+        }
+        .block-collapsible-nav {
+            position: absolute;
+            .title {
+                display: block;
+            }
+            .title strong {
+                display: none
+            }
+            .title:after {
+                position: static;
+                margin-left: 0;
+            }
+            .content {
+                display: none;
+                &.active {
+                    display: block;}
+            }
+        }
+
     }
+}
+
+//  380-640px
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .account {
+        .columns {
+            display: block;
+            .column.main {
+                float: right;
+                width: 60%;
+                padding-left: 2%;
+            }
+            .sidebar-main {
+                float: left;
+                padding-right: 2%;
+                width: 40%;
+            }
+            .sidebar-additional {
+                margin-top: 2%;
+                width: 40%;
+                clear: left;
+                float: left;
+            }
+        };
+
+        .block-collapsible-nav {
+            position: static;
+            .title {
+                display: none;
+             }
+            .content {
+                display: block;
+             }
+        }
+    }
+}
